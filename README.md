@@ -2,6 +2,8 @@
 
 A 3D visualization tool for Wire Arc Additive Manufacturing (WAAM) robot monitoring and mesh analysis with real-time telemetry simulation.
 
+![Screenshot](public/screenshot.png)
+
 ## Tech Stack
 
 - **Framework**: [Next.js 16](https://nextjs.org/) (App Router, Turbopack)
