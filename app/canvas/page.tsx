@@ -7,16 +7,21 @@ import { StoreProvider } from "@/lib/store-provider";
 import { RamlabMeshes } from "@/components/ramlab-meshes";
 import { RobotToolHead } from "@/components/robot-tool-head";
 import { RobotStatusPanel } from "@/components/robot-status-panel";
-import { MeshVisibilityPanel, MeshVisibility } from "@/components/mesh-visibility-panel";
+import { MeshVisibilityPanel, MeshVisibility, MaterialMode } from "@/components/mesh-visibility-panel";
 
-function CanvasScene({ meshVisibility }: { meshVisibility: MeshVisibility }) {
+interface CanvasSceneProps {
+  meshVisibility: MeshVisibility;
+  materialMode: MaterialMode;
+}
+
+function CanvasScene({ meshVisibility, materialMode }: CanvasSceneProps) {
   return (
     <Canvas className="h-full w-full">
       <ambientLight intensity={0.3} />
       <directionalLight color="white" position={[5, 10, 5]} intensity={1} />
       <directionalLight color="white" position={[-5, 5, -5]} intensity={0.5} />
 
-      <RamlabMeshes visibility={meshVisibility} />
+      <RamlabMeshes visibility={meshVisibility} materialMode={materialMode} />
       <RobotToolHead />
       <OrbitControls />
       
@@ -31,10 +36,11 @@ function CanvasContent() {
     targetMesh: true,
     resultMesh: true,
   });
+  const [materialMode, setMaterialMode] = useState<MaterialMode>('gray');
 
   return (
     <div id="canvas-container" className="relative h-screen w-screen bg-neutral-950">
-      <CanvasScene meshVisibility={meshVisibility} />
+      <CanvasScene meshVisibility={meshVisibility} materialMode={materialMode} />
       
       {/* UI Overlay - positioned absolute over the canvas */}
       <div className="absolute inset-0 pointer-events-none">
@@ -43,6 +49,8 @@ function CanvasContent() {
           <MeshVisibilityPanel
             visibility={meshVisibility}
             onVisibilityChange={setMeshVisibility}
+            materialMode={materialMode}
+            onMaterialModeChange={setMaterialMode}
           />
         </div>
 
