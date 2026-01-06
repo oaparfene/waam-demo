@@ -34,6 +34,7 @@ const fragmentShader = `
   varying vec3 vNormal;
   
   // Color ramp function: blue → cyan → green → yellow → red
+  // Red only appears in the top ~10% of values (outliers)
   vec3 colorRamp(float t) {
     t = clamp(t, 0.0, 1.0);
     
@@ -43,14 +44,15 @@ const fragmentShader = `
     vec3 yellow = vec3(1.0, 1.0, 0.0);
     vec3 red = vec3(1.0, 0.0, 0.0);
     
-    if (t < 0.25) {
-      return mix(blue, cyan, t * 4.0);
+    // Adjusted distribution: red only in top 10% (0.9-1.0)
+    if (t < 0.1) {
+      return mix(blue, cyan, t / 0.1);
     } else if (t < 0.5) {
-      return mix(cyan, green, (t - 0.25) * 4.0);
-    } else if (t < 0.75) {
-      return mix(green, yellow, (t - 0.5) * 4.0);
+      return mix(cyan, green, (t - 0.1) / 0.5);
+    } else if (t < 0.9) {
+      return mix(green, yellow, (t - 0.5) / 0.4);
     } else {
-      return mix(yellow, red, (t - 0.75) * 4.0);
+      return mix(yellow, red, (t - 0.9) / 0.1);
     }
   }
   
@@ -79,10 +81,10 @@ interface DeviationMaterialProps {
 }
 
 export function DeviationMaterial({ 
-  // Based on the data: dz dominates with values ~4.5-4.8
-  // Magnitude will be approximately sqrt(dx² + dy² + dz²) ≈ 4.5-5.0
+  // Highest magnitude values are around 21
+  // Set max to ~18-20 so only outliers (>18) show red
   minMagnitude = 0.0, 
-  maxMagnitude = 6.0
+  maxMagnitude = 18.0
 }: DeviationMaterialProps) {
   const materialRef = useRef<THREE.ShaderMaterial>(null)
 

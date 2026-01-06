@@ -27,7 +27,7 @@ const MESH_INFO = [
 const MATERIAL_MODES: { key: MaterialMode; label: string; color: string }[] = [
   { key: 'gray', label: 'Gray', color: 'bg-neutral-500' },
   { key: 'rgb', label: 'RGB', color: 'bg-gradient-to-r from-red-500 via-green-500 to-blue-500' },
-  { key: 'deviation', label: 'Deviation', color: 'bg-gradient-to-r from-blue-500 via-green-500 to-red-500' },
+  { key: 'deviation', label: 'Deposition', color: 'bg-gradient-to-r from-blue-500 via-green-500 to-red-500' },
 ]
 
 export function MeshVisibilityPanel({ 
