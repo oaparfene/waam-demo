@@ -26,7 +26,7 @@ interface RamlabMeshesProps {
 }
 
 export function RamlabMeshes({ visibility, materialMode = 'gray', onVertexHover, ...props }: RamlabMeshesProps) {
-  const { nodes } = useGLTF('/meshes/ramlab_draco_prefix_meshattr.glb')
+  const { nodes } = useGLTF('/meshes/draco_prefix_meshattr.glb')
   
   // Default to all visible if no visibility prop provided
   const showTarget = visibility?.targetMesh ?? true
@@ -182,4 +182,4 @@ export function RamlabMeshes({ visibility, materialMode = 'gray', onVertexHover,
   )
 }
 
-useGLTF.preload('/meshes/ramlab_draco_prefix_meshattr.glb')
+useGLTF.preload('/meshes/draco_prefix_meshattr.glb')

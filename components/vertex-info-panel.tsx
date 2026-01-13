@@ -1,7 +1,7 @@
 'use client'
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import type { VertexData } from './ramlab-meshes'
+import type { VertexData } from './meshes'
 import type { MaterialMode } from './mesh-visibility-panel'
 
 interface VertexInfoPanelProps {

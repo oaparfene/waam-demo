@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { StoreProvider } from "@/lib/store-provider";
-import { RamlabMeshes, VertexData } from "@/components/ramlab-meshes";
+import { RamlabMeshes, VertexData } from "@/components/meshes";
 import { RobotToolHead } from "@/components/robot-tool-head";
 import { RobotStatusPanel } from "@/components/robot-status-panel";
 import { MeshVisibilityPanel, MeshVisibility, MaterialMode } from "@/components/mesh-visibility-panel";

@@ -146,10 +146,10 @@ Place your exported `.glb` file in the `public/meshes/` directory:
 ```
 public/
   meshes/
-    ramlab_draco_prefix_meshattr.glb
+    draco_prefix_meshattr.glb
 ```
 
-Reference it in code via public URL: `/meshes/ramlab_draco_prefix_meshattr.glb`
+Reference it in code via public URL: `/meshes/draco_prefix_meshattr.glb`
 
 ---
 
@@ -164,7 +164,7 @@ Reference it in code via public URL: `/meshes/ramlab_draco_prefix_meshattr.glb`
 ├── components/
 │   ├── deviation-material.tsx    # Deposition heatmap shader
 │   ├── mesh-visibility-panel.tsx # Mesh toggle controls
-│   ├── ramlab-meshes.tsx         # GLTF mesh loader
+│   ├── meshes.tsx         # GLTF mesh loader
 │   ├── rgb-material.tsx          # RGB vertex color shader
 │   ├── robot-status-panel.tsx    # Telemetry display
 │   ├── robot-tool-head.tsx       # 3D robot model
@@ -189,7 +189,3 @@ To add new vertex attributes (e.g., temperature):
 2. **Create shader** in `components/` that reads the attribute
 3. **Add material mode** to `mesh-visibility-panel.tsx`
 4. **Update vertex info panel** to display the new data on hover
-
-## License
-
-Private - RAMLAB
